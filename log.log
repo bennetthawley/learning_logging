@@ -1,0 +1,15 @@
+Filename: example_logging.py - Timestamp: 02/11/19 08:13:03 - DEBUG - Line Number: 15 - Message: This is a debug message
+
+Filename: example_logging.py - Timestamp: 02/11/19 08:13:03 - INFO - Line Number: 16 - Message: This is an info message
+
+Filename: example_logging.py - Timestamp: 02/11/19 08:13:03 - WARNING - Line Number: 17 - Message: This is a warning message
+
+Filename: example_logging.py - Timestamp: 02/11/19 08:13:03 - ERROR - Line Number: 18 - Message: This is an error message and stuff
+
+Filename: example_logging.py - Timestamp: 02/11/19 08:13:03 - CRITICAL - Line Number: 19 - Message: This is a critical message
+
+Filename: example_logging.py - Timestamp: 02/11/19 08:13:03 - ERROR - Line Number: 27 - Message: Exception occurred
+Traceback (most recent call last):
+  File "C:/GitHub/logging/example_logging.py", line 25, in <module>
+    c = a / b
+ZeroDivisionError: division by zero
