@@ -1,22 +1,34 @@
-# https://realpython.com/python-logging/
+# https://realpython.com/python-logger/
 
 import logging
 
-logging.basicConfig(level=logging.DEBUG,
-                    filename='log.log',
-                    filemode='w',
-                    format='Filename: %(filename)s - Timestamp: %(asctime)s'
-                           ' - %(levelname)s - Line Number: %(lineno)d - '
-                           'Message: %(message)s\n',
-                    datefmt='%x %X')
+# Create a custom logger
+logger = logging.getLogger(__name__)
+
+# Create handlers
+stream_handler = logging.StreamHandler()
+file_handler = logging.FileHandler('file.log')
+stream_handler.setLevel(logging.DEBUG)
+file_handler.setLevel(logging.DEBUG)
+
+# Create formatters and add it to handlers
+stream_formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
+file_formatter = logging.Formatter(
+    '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+stream_handler.setFormatter(stream_formatter)
+file_handler.setFormatter(file_formatter)
+
+# Add handlers to the logger
+logger.addHandler(stream_handler)
+logger.addHandler(file_handler)
 
 something = 'and stuff'
 
-logging.debug('This is a debug message')
-logging.info('This is an info message')
-logging.warning('This is a warning message')
-logging.error('This is an error message {}'.format(something))
-logging.critical('This is a critical message')
+logger.debug('This is a debug message')
+logger.info('This is an info message')
+logger.warning('This is a warning message')
+logger.error('This is an error message {}'.format(something))
+logger.critical('This is a critical message')
 
 a = 5
 b = 0
@@ -24,4 +36,4 @@ b = 0
 try:
   c = a / b
 except Exception as e:
-  logging.exception("Exception occurred")
+    logger.exception("Exception occurred")
